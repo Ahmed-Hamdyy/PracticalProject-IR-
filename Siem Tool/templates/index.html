@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siem Tool - Security Event Monitor</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Styles -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                Siem Tool
+            </div>
+            <nav>
+                <a href="/" class="nav-item active">
+                    <i class="fas fa-home"></i>
+                    Dashboard
+                </a>
+                <a href="/correlations.html" class="nav-item">
+                    <i class="fas fa-shield-alt"></i>
+                    Security Correlations
+                </a>
+                <a href="/analytics" class="nav-item">
+                    <i class="fas fa-chart-line"></i>
+                    Analytics
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="status-bar">
+                    <span class="status-indicator status-inactive" id="monitorStatus"></span>
+                    <span id="statusText">Monitoring Inactive</span>
+                    <div class="btn-group">
+                        <button id="startButton" class="btn btn-primary">
+                            <i class="bx bx-play"></i>
+                            Start Monitoring
+                        </button>
+                        <button id="clearButton" class="btn btn-danger">
+                            <i class="bx bx-trash"></i>
+                            Clear
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content -->
+            <div class="content">
+                <!-- Filters -->
+                <div class="filters">
+                    <select class="filter-input" id="logTypeFilter">
+                        <option value="">All Log Types</option>
+                        <option value="Application">Application</option>
+                        <option value="System">System</option>
+                        <option value="Security">Security</option>
+                    </select>
+                    <input type="text" class="filter-input" id="eventIdFilter" placeholder="Event ID">
+                    <input type="text" class="filter-input" id="sourceFilter" placeholder="Source">
+                </div>
+
+                <!-- Cards Grid -->
+                <div class="cards-container">
+                    <!-- Events Section -->
+                    <section class="events-section">
+                        <h2>System Events</h2>
+                        <div id="eventContainer"></div>
+                    </section>
+
+                    <!-- Alerts Section -->
+                    <section class="alerts-section">
+                        <h2>Security Alerts</h2>
+                        <div id="alertContainer"></div>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html> 

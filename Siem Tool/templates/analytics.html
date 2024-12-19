@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEIM Analytics</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Styles -->
+    <link href="{{ url_for('static', filename='css/analytics.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="top-nav">
+            <a href="/" class="nav-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Monitor
+            </a>
+            <h1>Siem Analytics</h1>
+            <div class="nav-actions">
+                <button id="refreshData" class="btn btn-primary">
+                    <i class="fas fa-sync"></i>
+                    Refresh Data
+                </button>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="analytics-content">
+            <!-- Overview Stats -->
+            <section class="stats-section">
+                <div class="stat-card" id="totalEvents">
+                    <h3>Total Events</h3>
+                    <div class="stat-value">0</div>
+                </div>
+                <div class="stat-card" id="totalAlerts">
+                    <h3>Total Alerts</h3>
+                    <div class="stat-value">0</div>
+                </div>
+                <div class="stat-card" id="commandExecutions">
+                    <h3>Command Executions</h3>
+                    <div class="stat-value">0</div>
+                </div>
+            </section>
+
+            <!-- Charts -->
+            <section class="charts-section">
+                <div class="chart-container">
+                    <h3>Event Distribution</h3>
+                    <canvas id="eventDistributionChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Alert Types</h3>
+                    <canvas id="alertTypesChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Command Execution Analysis</h3>
+                    <canvas id="commandAnalysisChart"></canvas>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='js/analytics.js') }}"></script>
+</body>
+</html> 

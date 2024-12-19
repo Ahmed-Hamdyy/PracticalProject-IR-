@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siem - Security Correlations</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Styles -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/correlations.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                Siem Tool
+            </div>
+            <nav>
+                <a href="/" class="nav-item">
+                    <i class="fas fa-home"></i>
+                    Dashboard
+                </a>
+                <a href="/correlations.html" class="nav-item active">
+                    <i class="fas fa-shield-alt"></i>
+                    Security Correlations
+                </a>
+                <a href="/analytics" class="nav-item">
+                    <i class="fas fa-chart-line"></i>
+                    Analytics
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="header">
+                <h1>Security Event Correlations</h1>
+                <div class="header-actions">
+                    <div class="time-filter">
+                        <select id="timeWindow" class="filter-input">
+                            <option value="5">Last 5 minutes</option>
+                            <option value="15">Last 15 minutes</option>
+                            <option value="30">Last 30 minutes</option>
+                            <option value="60">Last hour</option>
+                        </select>
+                    </div>
+                    <button id="refreshCorrelations" class="btn btn-primary">
+                        <i class="fas fa-sync"></i>
+                        Refresh
+                    </button>
+                </div>
+            </header>
+
+            <div class="content">
+                <!-- Correlation Patterns -->
+                <section class="patterns-section">
+                    <div class="section-header">
+                        <h2>Detected Patterns</h2>
+                        <div class="pattern-filters">
+                            <select id="patternType" class="filter-input">
+                                <option value="">All Patterns</option>
+                                <option value="brute-force">Brute Force Attempts</option>
+                                <option value="reconnaissance">Reconnaissance Activity</option>
+                                <option value="powershell">PowerShell Activity</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="correlationContainer" class="correlation-grid"></div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/correlations.js') }}"></script>
+</body>
+</html> 
